@@ -1,4 +1,6 @@
+# PROJECT 2 BIG DATA APACHE KAFKA
 
+**KELOMPOK 5**
 | Nama | NRP |
 |---------------------------|------------|
 |Nayla Raissa Azzahra | 5027231054 |

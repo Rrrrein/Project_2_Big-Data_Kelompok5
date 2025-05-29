@@ -8,7 +8,7 @@
 | Member 3 | 051xxxx | Dataset Processing & Dokumentasi        |
 
 ---
-## 📚 Deskripsi Proyek
+## Deskripsi Proyek
 ![image](https://github.com/user-attachments/assets/f25c3288-064e-4743-9ac3-41e9e8a43a4f)
 Proyek ini mensimulasikan sistem Big Data yang memproses review aplikasi Netflix secara streaming menggunakan Kafka. Data dikirim secara sekuensial oleh Kafka Producer, diterima oleh Kafka Consumer, lalu disimpan dalam batch JSON. Data yang telah terkumpul dilatih menggunakan Apache Spark MLlib untuk membentuk tiga model machine learning berbeda berdasarkan bagian data yang berbeda. Model-model ini kemudian digunakan oleh REST API untuk memberikan prediksi klasifikasi cluster terhadap input pengguna.
 
@@ -21,7 +21,7 @@ Proyek ini mensimulasikan sistem Big Data yang memproses review aplikasi Netflix
 * [x] API dibangun menggunakan Flask dan menyajikan model via endpoint berbeda
 * [x] Dapat digunakan via Postman maupun Thunder Client (VSCode)
 
-## 🖼Arsitektur Sistem
+## Arsitektur Sistem
 
 ```
 [Dataset]

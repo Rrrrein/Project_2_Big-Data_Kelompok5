@@ -65,65 +65,93 @@ Proyek ini mensimulasikan sistem Big Data yang memproses review aplikasi Netflix
 ```
 
 ## Cara Menjalankan Proyek
-
+1. Clone repo dan masuk ke folder
 ```bash
-# 1. Clone repo dan masuk ke folder
-$ git clone https://github.com/username/project-kafka-spark.git
-$ cd project-kafka-spark
+git clone https://github.com/username/project-kafka-spark.git
+cd project-kafka-spark
+```
 
-# 2. Buat virtual environment dan install dependensi
-$ python3 -m venv venv
-$ source venv/bin/activate
-$ pip install -r requirements.txt
+2. Buat virtual environment dan install dependensi
+```bash
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+3. Jalankan Docker Kafka + Zookeeper
+   ```bash
+   docker-compose up -d
+   ```
 
-# 3. Jalankan Docker Kafka + Zookeeper
-$ docker-compose up -d
+5. Masuk ke container Kafka
+   ```bash
+   docker exec -it kafka bash
+   ```
 
-# 4. Masuk ke container Kafka
-$ docker exec -it kafka bash
+   Buat topik Kafka dengan nama "netflix-reviews"
+   ```bash
+   I have no name!@<container_id>:/$ kafka-topics.sh --create \
+     --topic netflix-reviews \
+     --bootstrap-server localhost:9092 \
+     --replication-factor 1 \
+     --partitions 1
+   ```
+6. Jalankan Producer
+   ```bash
+   python kafka/producer.py
+   ```
 
-Buat topik Kafka dengan nama "netflix-reviews"
-I have no name!@<container_id>:/$ kafka-topics.sh --create \
-  --topic netflix-reviews \
-  --bootstrap-server localhost:9092 \
-  --replication-factor 1 \
-  --partitions 1
-
-# 5. Jalankan Producer
-$ python kafka/producer.py
 ![448707470-27e251c1-fb38-4cac-9777-40b806f4899c](https://github.com/user-attachments/assets/96ea83e3-1a40-4e53-bba1-ebe48c0286e6)
 
-# 6. Jalankan Consumer (kumpulkan 500.000 data / 1000 batch untuk tiap model)
-$ python kafka/consumer.py
+6. Jalankan Consumer (kumpulkan 500.000 data / 1000 batch untuk tiap model)
+   ```bash
+   python kafka/consumer.py
+   ```
+
 ![448708894-ce9d4b4d-9358-43c3-850a-226623527738](https://github.com/user-attachments/assets/a24305db-e64f-4935-8af8-e15001d5b85c)
 
-# Cek apakah consumer sudah berjalan dan menerima data
-$ kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic netflix-reviews --from-beginning
+   Cek apakah consumer sudah berjalan dan menerima data
+   ```bash
+   kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic netflix-reviews --from-beginning
+   ```
 
-# 7. Jalankan script Spark untuk training model
-# Set environment Java (di WSL jika menggunakan Linux subsystem di Windows)
-$ export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
-$ export PATH=$JAVA_HOME/bin:$PATH
+7. Jalankan script Spark untuk training model
+   - Set environment Java (di WSL jika menggunakan Linux subsystem di Windows)
+   ```bash
+   export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+   export PATH=$JAVA_HOME/bin:$PATH
+   ```
 
-# Aktifkan virtual environment (pastikan sudah membuatnya sebelumnya)
-$ source ~/venv-pyspark/bin/activate
+   - Aktifkan virtual environment (pastikan sudah membuatnya sebelumnya)
+   ```bash
+   source ~/venv-pyspark/bin/activate
+   ```
 
-# Masuk ke folder proyek
-$ cd "/mnt/c/Users/nasiKucing/Documents/College's/4th Term/Big Data dan Data Lakehouse/Project-2-Kafka-Kelompok-5"
+   - Masuk ke folder proyek
+     ```bash
+     cd "/mnt/c/Users/nasiKucing/Documents/College's/4th Term/Big Data dan Data Lakehouse/Project-2-Kafka-Kelompok-5"
+     ```
 
-$ spark-submit spark/spark_script.py
-![448756624-4acd8d9c-2105-4243-9bbe-715f6b2879cd](https://github.com/user-attachments/assets/7b7a62b2-ced2-4d4a-9643-1b9937cedefc)
+   - Jalankan spark script
+     ```bash
+     spark-submit spark/spark_script.py
+     ```
+   ![448756624-4acd8d9c-2105-4243-9bbe-715f6b2879cd](https://github.com/user-attachments/assets/7b7a62b2-ced2-4d4a-9643-1b9937cedefc)
 
-# 8. Jalankan Flask API
-# Masuk ke WSL & aktifkan venv
-$ source ~/venv-pyspark/bin/activate
+8. Jalankan Flask API
+   - Masuk ke WSL & aktifkan venv
+     ```bash
+     source ~/venv-pyspark/bin/activate
+     ```
 
-# Masuk ke folder proyek jika belum
-$ cd "/mnt/c/Users/nasiKucing/Documents/College's/4th Term/Big Data dan Data Lakehouse/Project-2-Kafka-Kelompok-5"
+   - Masuk ke folder proyek jika belum
+     ```bash
+     cd "/mnt/c/Users/nasiKucing/Documents/College's/4th Term/Big Data dan Data Lakehouse/Project-2-Kafka-Kelompok-5"
+     ```
 
-# Jalankan server API
-$ python api/server.py
-```
+   - Jalankan server API
+     ```bash
+     python api/server.py
+     ```
 
 ## Contoh Request API
 

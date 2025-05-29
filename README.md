@@ -1,11 +1,11 @@
 # PROJECT 2 BIG DATA APACHE KAFKA 
 
 **KELOMPOK 5**
-| Nama     | NRP     | Tugas                                   |
-| -------- | ------- | --------------------------------------- |
-| Ayya     | 051xxxx | Flask API, Spark Script, Evaluasi Model |
-| Member 2 | 051xxxx | Kafka Producer & Consumer               |
-| Member 3 | 051xxxx | Dataset Processing & Dokumentasi        |
+| Nama     |                 NRP     |
+| -------- |------- | 
+| Nayla Raissa Azzahra     | 5027231054 |
+| Aisha Ayya Ratiandari    | 5027231056 |
+| Aisyah Rahmasari         | 5027231072 |
 
 ---
 ## Deskripsi Proyek
